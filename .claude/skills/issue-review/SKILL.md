@@ -1,8 +1,7 @@
 ---
 name: issue-review
 description: Review recent issues with labeling, context analysis, and duplicate detection
-disable-model-invocation: true
-argument-hint: "[count=10]"
+argument-hint: '[count=10]'
 allowed-tools: Bash, Read, Grep, Glob, Skill
 ---
 
@@ -15,6 +14,7 @@ Fetch recent issues, label unlabeled ones with context, detect duplicates.
 $ARGUMENTS — Number of issues (default: `10`)
 
 Examples:
+
 - `/issue-review` — 10 most recent open issues
 - `/issue-review 20` — 20 issues
 
@@ -39,6 +39,7 @@ gh issue view {number} --repo toss/es-toolkit --json title,body,labels,comments
 #### b. Read related source code
 
 If the issue mentions a specific function:
+
 - Read the function source to understand current behavior
 - Read existing tests to see what's covered
 - Check if there's already a compat variant
@@ -61,6 +62,7 @@ gh issue list --repo toss/es-toolkit --state all --search "{function name}" --li
 ```
 
 Group by:
+
 - Same function name in title
 - Similar error descriptions
 - Same feature being requested

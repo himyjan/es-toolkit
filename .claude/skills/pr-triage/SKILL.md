@@ -1,7 +1,6 @@
 ---
 name: pr-triage
 description: Classify and summarize a PR for efficient review
-disable-model-invocation: true
 argument-hint: "<PR number>"
 allowed-tools: Bash, Read, Grep, Glob
 ---

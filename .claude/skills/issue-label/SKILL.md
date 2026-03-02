@@ -1,8 +1,7 @@
 ---
 name: issue-label
 description: Suggest and apply GitHub labels to unlabeled issues
-disable-model-invocation: true
-argument-hint: "<issue number>"
+argument-hint: '<issue number>'
 allowed-tools: Bash, Read, Grep
 ---
 
@@ -16,18 +15,18 @@ $ARGUMENTS — Issue number (e.g. `1234`)
 
 ## Available Labels
 
-| Label | When to use |
-|-------|-------------|
-| `p0: major bug` | Core function broken, incorrect results, crashes |
-| `p1: minor bug` | Edge case failures, non-critical behavior issues, type errors |
-| `p1: docs bug` | Wrong/outdated documentation, broken links |
-| `p2: optimization` | Performance improvements, bundle size reduction |
-| `p2: new feature` | New function or capability request |
-| `p2: type enhancement` | TypeScript type improvements, better generics |
-| `p2: refactoring` | Code cleanup, internal improvements |
-| `p2: docs enhancement` | New docs, translations, better examples |
-| `p3: discussion` | Questions, design discussions, RFCs |
-| `help wanted` | Good for external contributors |
+| Label                  | When to use                                                   |
+| ---------------------- | ------------------------------------------------------------- |
+| `p0: major bug`        | Core function broken, incorrect results, crashes              |
+| `p1: minor bug`        | Edge case failures, non-critical behavior issues, type errors |
+| `p1: docs bug`         | Wrong/outdated documentation, broken links                    |
+| `p2: optimization`     | Performance improvements, bundle size reduction               |
+| `p2: new feature`      | New function or capability request                            |
+| `p2: type enhancement` | TypeScript type improvements, better generics                 |
+| `p2: refactoring`      | Code cleanup, internal improvements                           |
+| `p2: docs enhancement` | New docs, translations, better examples                       |
+| `p3: discussion`       | Questions, design discussions, RFCs                           |
+| `help wanted`          | Good for external contributors                                |
 
 ## Workflow
 
@@ -42,6 +41,7 @@ If labels already exist, report them and stop.
 ### 2. Analyze content
 
 From title and body, identify:
+
 - Is it a bug report? (error messages, "doesn't work", "incorrect", "doesn't match lodash")
 - Is it a feature request? ("add", "implement", "support")
 - Is it about docs? ("docs", "typo", "translation", "example")

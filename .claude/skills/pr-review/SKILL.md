@@ -1,8 +1,7 @@
 ---
 name: pr-review
 description: Review recent PRs with deep context and label-specific checks
-disable-model-invocation: true
-argument-hint: "[count=10]"
+argument-hint: '[count=10]'
 allowed-tools: Bash, Read, Grep, Glob, Skill
 ---
 
@@ -15,6 +14,7 @@ Fetch recent PRs, classify, read source code, and produce contextual reviews.
 $ARGUMENTS — Number of PRs (default: `10`)
 
 Examples:
+
 - `/pr-review` — 10 most recent open PRs
 - `/pr-review 20` — 20 PRs
 
@@ -37,6 +37,7 @@ For each PR, go beyond classification — **read the actual source code** and pr
 #### a. Read current code
 
 Read the files being modified on main to understand the current behavior:
+
 - Function source: what it does, how it works
 - Existing tests: what's already covered
 - JSDoc: documented behavior and examples
@@ -44,6 +45,7 @@ Read the files being modified on main to understand the current behavior:
 #### b. Understand the PR change
 
 Read the diff to understand what's changing:
+
 - What's the before vs after?
 - Why does the contributor say this change is needed?
 - Does the change match what the code actually needs?

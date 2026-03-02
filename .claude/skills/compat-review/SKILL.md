@@ -1,8 +1,7 @@
 ---
 name: compat-review
 description: Verify compat PR claims by running lodash vs es-toolkit/compat at runtime
-disable-model-invocation: true
-argument-hint: "<PR number or function name>"
+argument-hint: '<PR number or function name>'
 allowed-tools: Bash, Read, Write, Grep, Glob
 ---
 
@@ -19,11 +18,13 @@ $ARGUMENTS — PR number (e.g. `1234`) or function name (e.g. `chunk`)
 ### 1. Identify target function and PR claims
 
 **PR number**:
+
 ```bash
 gh pr view {number} --repo toss/es-toolkit --json title,body,files
 ```
 
 From the PR description and diff, extract:
+
 - Which compat function is being fixed
 - What inconsistency the contributor claims (expected vs actual behavior)
 - Any test examples the contributor provides
@@ -36,8 +37,8 @@ Create a temporary vitest spec at `src/compat/{category}/_compat-review-{fn}.spe
 
 ```typescript
 import { describe, expect, it } from 'vitest';
-import { fn as lodashFn } from 'lodash';
 import { fn as compatFn } from 'es-toolkit/compat';
+import { fn as lodashFn } from 'lodash';
 ```
 
 Include two groups of test cases:
@@ -45,6 +46,7 @@ Include two groups of test cases:
 **A. Contributor's claimed examples** — Extract directly from the PR description or test diff. These are the cases the PR claims to fix.
 
 **B. ~10 additional edge cases you generate** — Based on the function's signature and lodash's known behavior patterns:
+
 - Empty inputs: `[]`, `{}`, `''`, `0`
 - Nullish: `null`, `undefined`
 - Negative/zero/float numbers: `-1`, `0`, `1.5`, `NaN`, `Infinity`
@@ -53,12 +55,21 @@ Include two groups of test cases:
 - Pick cases that are relevant to the specific function
 
 Each test:
+
 ```typescript
 it('description', () => {
   let lodashResult, compatResult;
   let lodashErr: any, compatErr: any;
-  try { lodashResult = lodashFn(args); } catch (e) { lodashErr = e; }
-  try { compatResult = compatFn(args); } catch (e) { compatErr = e; }
+  try {
+    lodashResult = lodashFn(args);
+  } catch (e) {
+    lodashErr = e;
+  }
+  try {
+    compatResult = compatFn(args);
+  } catch (e) {
+    compatErr = e;
+  }
 
   if (lodashErr && compatErr) return; // both throw = consistent
   if (lodashErr || compatErr) {
@@ -83,10 +94,12 @@ gh pr diff {number} --repo toss/es-toolkit | git apply
 ```
 
 Run the same test again. Confirm that:
+
 - The contributor's claimed examples now pass
 - The additional edge cases still pass (no regressions)
 
 Revert after testing:
+
 ```bash
 git checkout -- .
 ```
