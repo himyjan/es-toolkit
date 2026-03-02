@@ -2,6 +2,10 @@
 
 Instructions for AI assistants working on es-toolkit.
 
+## Language
+
+This is a global project with users speaking various languages. When producing non-code output (explanations, reviews, reports), respond in the user's preferred language.
+
 ## Quick Reference
 
 ```bash
@@ -29,7 +33,7 @@ docs/zh_hans/reference/{category}/{fn}.md   # Chinese
 - **Performance**: Must match or beat lodash.
 - **Simplicity**: Simplest interface for the 85% use case. No complex options.
 - **Don't implement**: Functions replaceable by modern JS (`Array.isArray`, `Number.isNaN`, `Math.min`), or TC39 Stage 3+ proposals.
-- **es-toolkit vs compat**: `es-toolkit` is the strict, opinionated API. `es-toolkit/compat` matches lodash behavior exactly for migration.
+- **es-toolkit vs compat**: `es-toolkit` is the strict, opinionated API. `es-toolkit/compat` matches lodash behavior exactly for migration. Compat is feature-complete — no new functions are being added. Only behavior inconsistency fixes against lodash are accepted.
 
 ## Coding Conventions
 
